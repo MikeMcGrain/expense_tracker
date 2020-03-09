@@ -1,9 +1,9 @@
 import React from "react"
 
-export default function List() {
+export default List => {
   return (
-    <div>
-      <p>Test from List Component</p>
-    </div>
+    <>
+      <h1>Test from List Component</h1>
+    </>
   )
 }

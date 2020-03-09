@@ -2,7 +2,7 @@ import React from "react"
 import Form from "./Components/Form"
 import List from "./Components/List"
 
-function App() {
+export default App => {
   return (
     <>
       <Form />
@@ -10,5 +10,3 @@ function App() {
     </>
   )
 }
-
-export default App
