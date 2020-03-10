@@ -6,7 +6,11 @@ export default App => {
   return (
     <>
       <Form />
-      <List />
+      <List catInfo={{name: "Mr. Whiskers", imageURL: "http://placekitten.com/300/200", alt: "cat picture"}} />
+      {/* <List 
+        name="Catters"
+        imageURL="http://placekitten.com/400/200"
+        alt ="another friggin' cat picture" /> */}
     </>
   )
 }
