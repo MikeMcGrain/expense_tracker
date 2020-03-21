@@ -1,27 +1,42 @@
 import React from "react"
 
 export default function Form() {
+
+  //useEffect() ?
+  const date = new Date()
+  const currentDate = `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
+
   return (
     <>
-      <h1>Text from Form Component</h1>
-      <ul>
-        <li>Type of payment: cash, credit, crypto</li>
-        <li>Amount of payment</li>
-        <li>Date of payment</li>
-        <li>Descripton of purchase</li>
-      </ul>
+      <h1>Form Component</h1>
       <form>
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-        <label htmlFor="vehicle1"> I have a bike</label>
-        <br />
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
-        <label htmlFor="vehicle2"> I have a car</label>
-        <br />
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
-        <label htmlFor="vehicle3"> I have a boat</label>
-        <br />
+        <div>
+          <label htmlFor="date">Date: </label>
+          <input id="date" name="date" type="date" defaultValue={currentDate} max={currentDate} />
+        </div>
+
+        <div>
+          <label htmlFor="description">Description: </label>
+          <input id="description" name="description" type="text" required />
+        </div>
+
+        <div>
+          <label htmlFor="type">Type: </label>
+          <select id="type" name="type">
+            <option value="cash">cash</option>
+            <option value="debit">debit</option>
+            <option value="credit">credit</option>
+            <option value="check">check</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="amount">Amount: </label>
+          <input id="amount" name="amount" type="number" min="1" required />
+        </div>
+
         <input type="submit" value="Submit" />
-        <hr />
+        <input type="reset" value="Reset" />
       </form>
     </>
   )
