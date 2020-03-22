@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { ExpenseItemsContext } from "../App.js"
 
-export default ExpenseForm => {
+export default () => {
   //useEffect()
   const date = new Date()
   const currentDate = `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
