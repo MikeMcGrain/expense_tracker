@@ -20,7 +20,7 @@ export default ExpenseTable => {
         <tbody>
           {items.map(item => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.date}</td>
                 <td>{item.description}</td>
                 <td>{item.type}</td>
