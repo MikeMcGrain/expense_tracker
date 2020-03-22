@@ -18,24 +18,16 @@ export default ExpenseTable => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{items[0].date}</td>
-            <td>{items[0].description}</td>
-            <td>{items[0].type}</td>
-            <td>{items[0].amount}</td>
-          </tr>
-          <tr>
-            <td>{items[1].date}</td>
-            <td>{items[1].description}</td>
-            <td>{items[1].type}</td>
-            <td>{items[1].amount}</td>
-          </tr>
-          <tr>
-            <td>21/02/2020</td>
-            <td>eggs</td>
-            <td>debit</td>
-            <td>$14.00</td>
-          </tr>
+          {items.map(item => {
+            return (
+              <tr>
+                <td>{item.date}</td>
+                <td>{item.description}</td>
+                <td>{item.type}</td>
+                <td>{item.amount}</td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>

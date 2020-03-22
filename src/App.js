@@ -14,9 +14,15 @@ export default App => {
     },
     {
       date: "some other date",
-      description: "description ofj another purchase",
+      description: "description of another purchase",
       type: "cash",
       amount: "$40.25"
+    },
+    {
+      date: "different date",
+      description: "description of different purchase",
+      type: "credit",
+      amount: "$70.87"
     }
   ]
   return (

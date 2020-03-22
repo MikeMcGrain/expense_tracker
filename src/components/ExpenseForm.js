@@ -7,6 +7,7 @@ export default ExpenseForm => {
   const currentDate = `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
 
   const items = useContext(ExpenseItemsContext)
+  console.log(items)
 
   return (
     <>
