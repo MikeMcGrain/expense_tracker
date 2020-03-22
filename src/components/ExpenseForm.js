@@ -1,18 +1,22 @@
 import React, { useContext } from "react"
-import { ExpenseItemsContext } from "../App.js"
+import ItemsContext from "../contexts/ItemsContext"
 
 export default () => {
   //useEffect()
   const date = new Date()
   const currentDate = `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
 
-  const items = useContext(ExpenseItemsContext)
-  console.log(items)
+  const expenseItems = useContext(ItemsContext)
+
+  function createNewItem(event) {
+    event.preventDefault()
+    console.log(expenseItems)
+  }
 
   return (
-    <>
+    <div>
       <h1>Expense Form</h1>
-      <form>
+      <form onSubmit={createNewItem}>
         <div>
           <label htmlFor="date">Date: </label>
           <input
@@ -47,6 +51,6 @@ export default () => {
         <input type="submit" value="Submit" />
         <input type="reset" value="Reset" />
       </form>
-    </>
+    </div>
   )
 }

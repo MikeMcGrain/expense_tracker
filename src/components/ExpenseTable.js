@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
-import { ExpenseItemsContext } from "../App.js"
+import ItemsContext from "../contexts/ItemsContext"
 import "../index.css"
 
 export default () => {
-  const items = useContext(ExpenseItemsContext)
+  const items = useContext(ItemsContext)
   const renderItems = items.map(item => {
     return (
       <tr key={item.id}>

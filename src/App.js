@@ -2,11 +2,10 @@ import React from "react"
 import shortid from "shortid"
 import ExpenseForm from "./components/ExpenseForm"
 import ExpenseTable from "./components/ExpenseTable"
+import { ItemsProvider } from "./contexts/ItemsContext"
 
-export const ExpenseItemsContext = React.createContext()
-
-export default App => {
-  let expenseItems = [
+export default () => {
+  const expenseItems = [
     {
       id: shortid.generate(),
       date: "some date",
@@ -31,10 +30,10 @@ export default App => {
   ]
   return (
     <div>
-      <ExpenseItemsContext.Provider value={expenseItems}>
+      <ItemsProvider value={expenseItems}>
         <ExpenseForm />
         <ExpenseTable />
-      </ExpenseItemsContext.Provider>
+      </ItemsProvider>
     </div>
   )
 }
