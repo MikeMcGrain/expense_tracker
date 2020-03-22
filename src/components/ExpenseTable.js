@@ -1,13 +1,13 @@
 import React, { useContext } from "react"
-// import { ItemContext } from "../App.js"
+import { ExpenseItemsContext } from "../App.js"
 import "../index.css"
 
 export default ExpenseTable => {
-  // const item = useContext(ItemContext)
+  const items = useContext(ExpenseItemsContext)
+
   return (
     <div>
-      <h1>Expense Table</h1>
-
+      <h1>Expense Table:</h1>
       <table>
         <thead>
           <tr>
@@ -16,31 +16,28 @@ export default ExpenseTable => {
             <th>Type</th>
             <th>Amount</th>
           </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
           <tr>
-            <td>21/02/2020</td>
-            <td>steaks</td>
-            <td>cash</td>
-            <td>$40.00</td>
+            <td>{items[0].date}</td>
+            <td>{items[0].description}</td>
+            <td>{items[0].type}</td>
+            <td>{items[0].amount}</td>
+          </tr>
+          <tr>
+            <td>{items[1].date}</td>
+            <td>{items[1].description}</td>
+            <td>{items[1].type}</td>
+            <td>{items[1].amount}</td>
           </tr>
           <tr>
             <td>21/02/2020</td>
             <td>eggs</td>
-            <td>credit</td>
-            <td>$21.50</td>
-          </tr>
-          <tr>
-            <td>21/02/2020</td>
-            <td>liver</td>
             <td>debit</td>
             <td>$14.00</td>
           </tr>
         </tbody>
       </table>
-
-      {/* <h1>Test from List Component</h1>
-      <p>{item}</p> */}
     </div>
   )
 }

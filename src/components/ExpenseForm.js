@@ -1,11 +1,12 @@
-import React from "react"
-import ExpenseTable from "./ExpenseTable"
+import React, { useContext } from "react"
+import { ExpenseItemsContext } from "../App.js"
 
 export default ExpenseForm => {
-
-  //useEffect() ?
+  //useEffect()
   const date = new Date()
   const currentDate = `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
+
+  const items = useContext(ExpenseItemsContext)
 
   return (
     <>
@@ -13,7 +14,13 @@ export default ExpenseForm => {
       <form>
         <div>
           <label htmlFor="date">Date: </label>
-          <input id="date" name="date" type="date" defaultValue={currentDate} max={currentDate} />
+          <input
+            id="date"
+            name="date"
+            type="date"
+            defaultValue={currentDate}
+            max={currentDate}
+          />
         </div>
 
         <div>
@@ -39,7 +46,6 @@ export default ExpenseForm => {
         <input type="submit" value="Submit" />
         <input type="reset" value="Reset" />
       </form>
-      <ExpenseTable />
     </>
   )
 }
