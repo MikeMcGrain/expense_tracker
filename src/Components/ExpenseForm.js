@@ -1,6 +1,7 @@
 import React from "react"
+import ExpenseTable from "./ExpenseTable"
 
-export default function Form() {
+export default ExpenseForm => {
 
   //useEffect() ?
   const date = new Date()
@@ -8,7 +9,7 @@ export default function Form() {
 
   return (
     <>
-      <h1>Form Component</h1>
+      <h1>Expense Form</h1>
       <form>
         <div>
           <label htmlFor="date">Date: </label>
@@ -38,6 +39,7 @@ export default function Form() {
         <input type="submit" value="Submit" />
         <input type="reset" value="Reset" />
       </form>
+      <ExpenseTable />
     </>
   )
 }
