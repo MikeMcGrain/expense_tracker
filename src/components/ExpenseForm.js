@@ -1,12 +1,15 @@
 import React, { useContext } from "react"
-import ItemsContext from "../contexts/ItemsContext"
+import { ItemsContext } from "../contexts/ItemsContext"
 
 export default () => {
+  const expenseItems = useContext(ItemsContext)
+
+
   //useEffect()
   const date = new Date()
   const currentDate = `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
 
-  const expenseItems = useContext(ItemsContext)
+  
 
   function createNewItem(event) {
     event.preventDefault()
