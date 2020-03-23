@@ -5,9 +5,9 @@ import ItemsContextProvider from "./contexts/ItemsContext"
 
 export default () => {
   return (
-      <ItemsContextProvider>
-        <ExpenseForm />
-        <ExpenseTable />
-      </ItemsContextProvider>
+    <ItemsContextProvider>
+      <ExpenseForm />
+      <ExpenseTable />
+    </ItemsContextProvider>
   )
 }

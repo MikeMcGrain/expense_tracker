@@ -27,9 +27,23 @@ const ItemsContextProvider = props => {
       amount: "$70.87"
     }
   ])
-  return <ItemsContext.Provider value={items}>
+  const addItem = (date, description, type, amount) => {
+    setItems(...items, {
+      id: shortid.generate(),
+      date,
+      description,
+      type,
+      amount
+    })
+  }
+  const removeItem = (id) => {
+    setItems(items.filter(item => item.id !== id))
+  }
+  return (
+    <ItemsContext.Provider value={{items, addItem, removeItem}}>
       {props.children}
-  </ItemsContext.Provider>
+    </ItemsContext.Provider>
+  )
 }
 
 export default ItemsContextProvider

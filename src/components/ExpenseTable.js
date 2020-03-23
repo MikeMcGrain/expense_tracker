@@ -3,10 +3,11 @@ import { ItemsContext } from "../contexts/ItemsContext"
 import "../index.css"
 
 export default () => {
-  const items = useContext(ItemsContext)
+  const { items, removeItem } = useContext(ItemsContext)
+  // const { removeItem } = useContext(ItemsContext)
   const renderItems = items.map(item => {
     return (
-      <tr key={item.id}>
+      <tr key={item.id} onClick={()=>removeItem(item.id)}>
         <td>{item.date}</td>
         <td>{item.description}</td>
         <td>{item.type}</td>
