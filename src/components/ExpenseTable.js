@@ -4,7 +4,6 @@ import "../index.css"
 
 export default () => {
   const { items, removeItem } = useContext(ItemsContext)
-  // const { removeItem } = useContext(ItemsContext)
   const renderItems = items.map(item => {
     return (
       <tr key={item.id} onClick={()=>removeItem(item.id)}>

@@ -28,13 +28,14 @@ const ItemsContextProvider = props => {
     }
   ])
   const addItem = (date, description, type, amount) => {
-    setItems(...items, {
+    console.log(date, description, type, amount)
+    setItems([...items, {
       id: shortid.generate(),
-      date,
-      description,
-      type,
-      amount
-    })
+      date: date,
+      description: description,
+      type: type,
+      amount: amount
+    }])
   }
   const removeItem = (id) => {
     setItems(items.filter(item => item.id !== id))
