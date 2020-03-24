@@ -6,7 +6,7 @@ export default () => {
   const { items, removeItem } = useContext(ItemsContext)
   const renderItems = items.map(item => {
     return (
-      <tr key={item.id} onClick={()=>removeItem(item.id)}>
+      <tr key={item.id} onClick={() => removeItem(item.id)}>
         <td>{item.date}</td>
         <td>{item.description}</td>
         <td>{item.type}</td>
@@ -21,10 +21,10 @@ export default () => {
       <table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Amount</th>
+            <th>Date:</th>
+            <th>Description:</th>
+            <th>Type:</th>
+            <th>Amount:</th>
           </tr>
         </thead>
         <tbody>{renderItems}</tbody>

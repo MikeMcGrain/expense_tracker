@@ -3,9 +3,9 @@ import { ItemsContext } from "../contexts/ItemsContext"
 
 export default () => {
   const [date, setDate] = useState(getCurrentDate)
-  const [description, setDescription] = useState()
-  const [type, setType] = useState()
-  const [amount, setAmount] = useState()
+  const [description, setDescription] = useState("")
+  const [type, setType] = useState("cash")
+  const [amount, setAmount] = useState("")
   const { addItem } = useContext(ItemsContext)
 
   function getCurrentDate() {
@@ -15,8 +15,11 @@ export default () => {
   
   function handleSubmit(event) {
     event.preventDefault()
-    // console.log(date, description, type, amount)
     addItem(date, description, type, amount)
+    setDate(getCurrentDate)
+    setDescription("")
+    setType("cash")
+    setAmount("")
   }
 
   return (
@@ -29,19 +32,19 @@ export default () => {
             id="date"
             name="date"
             type="date"
-            defaultValue={date}
+            value={date}
             onChange={(e)=> setDate(e.target.value)}
           />
         </div>
 
         <div>
           <label htmlFor="description">Description: </label>
-          <input id="description" name="description" type="text" onChange={(e)=> setDescription(e.target.value)} required />
+          <input id="description" name="description" type="text" value={description} onChange={(e)=> setDescription(e.target.value)} required />
         </div>
 
         <div>
           <label htmlFor="type">Type: </label>
-          <select id="type" name="type" onChange={(e)=> setType(e.target.value)}>
+          <select id="type" name="type" value={type} onChange={(e)=> setType(e.target.value)}>
             <option value="cash">cash</option>
             <option value="debit">debit</option>
             <option value="credit">credit</option>
@@ -51,7 +54,7 @@ export default () => {
 
         <div>
           <label htmlFor="amount">Amount: </label>
-          <input id="amount" name="amount" type="number" min="1" onChange={(e)=> setAmount(e.target.value)} required />
+          <input id="amount" name="amount" type="number" value={amount} onChange={(e)=> setAmount(e.target.value)} required />
         </div>
 
         <input type="submit" value="Submit" />

@@ -4,44 +4,25 @@ import shortid from "shortid"
 export const ItemsContext = createContext()
 
 const ItemsContextProvider = props => {
-  const [items, setItems] = useState([
-    {
-      id: shortid.generate(),
-      date: "some date",
-      description: "description of purchase",
-      type: "debit",
-      amount: "$12.35"
-    },
-    {
-      id: shortid.generate(),
-      date: "some other date",
-      description: "description of another purchase",
-      type: "cash",
-      amount: "$40.25"
-    },
-    {
-      id: shortid.generate(),
-      date: "different date",
-      description: "description of different purchase",
-      type: "credit",
-      amount: "$70.87"
-    }
-  ])
+  const [items, setItems] = useState([])
   const addItem = (date, description, type, amount) => {
     console.log(date, description, type, amount)
-    setItems([...items, {
-      id: shortid.generate(),
-      date: date,
-      description: description,
-      type: type,
-      amount: amount
-    }])
+    setItems([
+      ...items,
+      {
+        id: shortid.generate(),
+        date: date,
+        description: description,
+        type: type,
+        amount: amount
+      }
+    ])
   }
-  const removeItem = (id) => {
+  const removeItem = id => {
     setItems(items.filter(item => item.id !== id))
   }
   return (
-    <ItemsContext.Provider value={{items, addItem, removeItem}}>
+    <ItemsContext.Provider value={{ items, addItem, removeItem }}>
       {props.children}
     </ItemsContext.Provider>
   )
