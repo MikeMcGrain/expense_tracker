@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
 import Modal from "react-modal"
-
 import "../index.css"
+Modal.setAppElement(document.getElementById("root"))
+
 
 export default () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -36,11 +37,10 @@ export default () => {
         </thead>
         <tbody>{renderItems}</tbody>
       </table>
-      <Modal isOpen={modalIsOpen}>
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <h2>Edit Expense</h2>
         <p>edit single expense here</p>
         <button onClick={() => setModalIsOpen(false)}>Close Modal</button>
-
       </Modal>
     </div>
   )
