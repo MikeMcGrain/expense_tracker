@@ -39,7 +39,7 @@ export default () => {
 
         <div>
           <label htmlFor="description">Description: </label>
-          <input id="description" name="description" type="text" value={description} onChange={(e)=> setDescription(e.target.value)} required />
+          <input id="description" name="description" type="text" value={description} onChange={(e)=> setDescription(e.target.value)} autoFocus required />
         </div>
 
         <div>

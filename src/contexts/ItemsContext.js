@@ -6,7 +6,6 @@ export const ItemsContext = createContext()
 const ItemsContextProvider = props => {
   const [items, setItems] = useState([])
   const addItem = (date, description, type, amount) => {
-    console.log(date, description, type, amount)
     setItems([
       ...items,
       {
