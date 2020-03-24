@@ -1,19 +1,18 @@
-import React, { useContext, useState} from "react"
+import React, { useContext, useState } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
 
-
 export default props => {
-    const { updateItem } = useContext(ItemsContext)
-    const [id, setID] = useState(props.itemToEdit.id)
-    const [date, setDate] = useState(props.itemToEdit.date)
-    const [description, setDescription] = useState(props.itemToEdit.description)
-    const [type, setType] = useState(props.itemToEdit.type)
-    const [amount, setAmount] = useState(props.itemToEdit.amount)
+  const { updateItem } = useContext(ItemsContext)
+  const [id] = useState(props.itemToEdit.id)
+  const [date, setDate] = useState(props.itemToEdit.date)
+  const [description, setDescription] = useState(props.itemToEdit.description)
+  const [type, setType] = useState(props.itemToEdit.type)
+  const [amount, setAmount] = useState(props.itemToEdit.amount)
 
-    function handleSubmit(event) {
-      event.preventDefault()
-      updateItem(id, date, description, type, amount)
-    }
+  function handleSubmit(event) {
+    event.preventDefault()
+    updateItem(id, date, description, type, amount)
+  }
 
   return (
     <div>

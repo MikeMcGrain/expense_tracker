@@ -10,9 +10,9 @@ export default () => {
 
   function getCurrentDate() {
     const date = new Date()
-    return `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}` 
+    return `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
   }
-  
+
   function handleSubmit(event) {
     event.preventDefault()
     addItem(date, description, type, amount)
@@ -33,18 +33,31 @@ export default () => {
             name="date"
             type="date"
             value={date}
-            onChange={(e)=> setDate(e.target.value)}
+            onChange={e => setDate(e.target.value)}
           />
         </div>
 
         <div>
           <label htmlFor="description">Description: </label>
-          <input id="description" name="description" type="text" value={description} onChange={(e)=> setDescription(e.target.value)} autoFocus required />
+          <input
+            id="description"
+            name="description"
+            type="text"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            autoFocus
+            required
+          />
         </div>
 
         <div>
           <label htmlFor="type">Type: </label>
-          <select id="type" name="type" value={type} onChange={(e)=> setType(e.target.value)}>
+          <select
+            id="type"
+            name="type"
+            value={type}
+            onChange={e => setType(e.target.value)}
+          >
             <option value="cash">cash</option>
             <option value="debit">debit</option>
             <option value="credit">credit</option>
@@ -54,7 +67,15 @@ export default () => {
 
         <div>
           <label htmlFor="amount">Amount: </label>
-          <input id="amount" name="amount" type="number" step="0.01" value={amount} onChange={(e)=> setAmount(e.target.value)} required />
+          <input
+            id="amount"
+            name="amount"
+            type="number"
+            step="0.01"
+            value={amount}
+            onChange={e => setAmount(e.target.value)}
+            required
+          />
         </div>
 
         <input type="submit" value="Submit" />
