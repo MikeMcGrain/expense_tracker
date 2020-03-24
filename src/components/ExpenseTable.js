@@ -8,12 +8,12 @@ Modal.setAppElement(document.getElementById("root"))
 
 export default () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [itemID, setItemID] = useState("")
+  const [itemToEdit, setItemToEdit] = useState("")
   const { items, removeItem } = useContext(ItemsContext)
 
-  function displayItem(itemID) {
+  function openEditForm(itemToView) {
     setModalIsOpen(true)
-    setItemID(itemID)
+    setItemToEdit(itemToView)
   }
 
   const renderItems = items.map(item => {
@@ -22,7 +22,7 @@ export default () => {
         <td>{item.date}</td>
         <td>
           {item.description}
-          <button onClick={() => displayItem(item.id)}>Edit</button>
+          <button onClick={() => openEditForm(item)}>Edit</button>
           <button onClick={() => removeItem(item.id)}>Delete</button>
         </td>
         <td>{item.type}</td>
@@ -46,7 +46,7 @@ export default () => {
         <tbody>{renderItems}</tbody>
       </table>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <EditExpense itemID={itemID} />
+        <EditExpense itemToEdit={itemToEdit} />
         <button onClick={() => setModalIsOpen(false)}>Close Modal</button>
       </Modal>
     </div>

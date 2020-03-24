@@ -54,7 +54,7 @@ export default () => {
 
         <div>
           <label htmlFor="amount">Amount: </label>
-          <input id="amount" name="amount" type="number" value={amount} onChange={(e)=> setAmount(e.target.value)} required />
+          <input id="amount" name="amount" type="number" step="0.01" value={amount} onChange={(e)=> setAmount(e.target.value)} required />
         </div>
 
         <input type="submit" value="Submit" />
