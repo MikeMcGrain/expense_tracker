@@ -46,7 +46,7 @@ export default () => {
         <tbody>{renderItems}</tbody>
       </table>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <EditExpense itemToEdit={itemToEdit} />
+        <EditExpense itemToEdit={itemToEdit} modalStatus={modalIsOpen} />
         <button onClick={() => setModalIsOpen(false)}>Close Modal</button>
       </Modal>
     </div>
