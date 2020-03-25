@@ -4,13 +4,13 @@ import shortid from "shortid"
 export const ItemsContext = createContext()
 const ItemsContextProvider = props => {
   const [items, setItems] = useState([
-    // {
-    //   id: shortid.generate(),
-    //   date: "2020-10-11",
-    //   description: "Test Object",
-    //   type: "credit",
-    //   amount: 22.43
-    // }
+    {
+      id: shortid.generate(),
+      date: "2020-10-11",
+      description: "Test Object",
+      type: "credit",
+      amount: 22.43
+    }
   ])
 
   const addItem = (date, description, type, amount) => {

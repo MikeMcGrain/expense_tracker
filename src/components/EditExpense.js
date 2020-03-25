@@ -70,7 +70,6 @@ export default props => {
         </div>
 
         <input type="submit" value="Save Changes" />
-        <input type="reset" value="Reset" />
       </form>
     </div>
   )

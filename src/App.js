@@ -1,13 +1,13 @@
 import React from "react"
-import ExpenseForm from "./components/ExpenseForm"
-import ExpenseTable from "./components/ExpenseTable"
+import EnterExpense from "./components/EnterExpense"
+import DisplayExpense from "./components/DisplayExpense"
 import ItemsContextProvider from "./contexts/ItemsContext"
 
 export default () => {
   return (
     <ItemsContextProvider>
-      <ExpenseForm />
-      <ExpenseTable />
+      <EnterExpense />
+      <DisplayExpense />
     </ItemsContextProvider>
   )
 }
