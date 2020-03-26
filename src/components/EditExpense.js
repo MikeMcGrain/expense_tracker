@@ -1,22 +1,37 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
+import EditExpenseModal from "react-modal"
+
+EditExpenseModal.setAppElement(document.getElementById("root"))
 
 export default props => {
   const { updateItem } = useContext(ItemsContext)
-  const [id] = useState(props.itemToEdit.id)
-  const [date, setDate] = useState(props.itemToEdit.date)
-  const [description, setDescription] = useState(props.itemToEdit.description)
-  const [type, setType] = useState(props.itemToEdit.type)
-  const [amount, setAmount] = useState(props.itemToEdit.amount)
+  const [id, setID] = useState()
+  const [date, setDate] = useState()
+  const [description, setDescription] = useState()
+  const [type, setType] = useState()
+  const [amount, setAmount] = useState()
+
+  useEffect(() => {
+    setID(props.itemToEdit.id)
+    setDate(props.itemToEdit.date)
+    setDescription(props.itemToEdit.description)
+    setType(props.itemToEdit.type)
+    setAmount(props.itemToEdit.amount)
+  }, [props])
 
   function handleSubmit(event) {
     event.preventDefault()
     updateItem(id, date, description, type, amount)
+    props.closeModal()
   }
 
   return (
-    <div>
-      <h1>EditExpense Component</h1>
+    <EditExpenseModal
+      isOpen={props.showModal}
+      onRequestClose={props.closeModal}
+    >
+      <h1>EditExpense</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="date">Date: </label>
@@ -68,9 +83,9 @@ export default props => {
             required
           />
         </div>
-
+        <button onClick={props.closeModal}>Cancel</button>
         <input type="submit" value="Save Changes" />
       </form>
-    </div>
+    </EditExpenseModal>
   )
 }

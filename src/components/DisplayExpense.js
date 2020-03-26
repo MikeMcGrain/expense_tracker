@@ -2,17 +2,14 @@ import React, { useContext, useState } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
 import EditExpense from "./EditExpense"
 import "../index.css"
-import Modal from "react-modal"
-
-Modal.setAppElement(document.getElementById("root"))
 
 export default () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [itemToEdit, setItemToEdit] = useState("")
   const { items, removeItem } = useContext(ItemsContext)
+  const [showModal, setShowModal] = useState(false)
+  const [itemToEdit, setItemToEdit] = useState("")
 
-  function openEditForm(itemToView) {
-    setModalIsOpen(true)
+  function editItem(itemToView) {
+    setShowModal(true)
     setItemToEdit(itemToView)
   }
 
@@ -22,7 +19,7 @@ export default () => {
         <td>{item.date}</td>
         <td>
           {item.description}
-          <button onClick={() => openEditForm(item)}>Edit</button>
+          <button onClick={() => editItem(item)}>Edit</button>
           <button onClick={() => removeItem(item.id)}>Delete</button>
         </td>
         <td>{item.type}</td>
@@ -45,10 +42,11 @@ export default () => {
         </thead>
         <tbody>{renderItems}</tbody>
       </table>
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <EditExpense itemToEdit={itemToEdit} modalStatus={modalIsOpen} />
-        <button onClick={() => setModalIsOpen(false)}>Close Modal</button>
-      </Modal>
+      <EditExpense
+        showModal={showModal}
+        itemToEdit={itemToEdit}
+        closeModal={() => setShowModal(false)}
+      />
     </div>
   )
 }
