@@ -31,7 +31,7 @@ export default props => {
       isOpen={props.showModal}
       onRequestClose={props.closeModal}
     >
-      <h1>EditExpense</h1>
+      <h2>EditExpense</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="date">Date: </label>
