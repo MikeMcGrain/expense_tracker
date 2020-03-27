@@ -2,15 +2,17 @@ import React, { useContext, useState } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
 
 export default () => {
+  const { addItem } = useContext(ItemsContext)
+
   const [date, setDate] = useState(getCurrentDate)
   const [description, setDescription] = useState("")
   const [type, setType] = useState("cash")
   const [amount, setAmount] = useState("")
-  const { addItem } = useContext(ItemsContext)
 
   function getCurrentDate() {
     const date = new Date()
-    return `${date.getFullYear()}-${("0" + date.getMonth()).slice(-2)}-${date.getDate()}`
+    const month = date.getMonth() + 1
+    return `${date.getFullYear()}-${("0" + month).slice(-2)}-${date.getDate()}`
   }
 
   function handleSubmit(event) {
