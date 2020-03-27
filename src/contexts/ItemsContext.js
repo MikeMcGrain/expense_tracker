@@ -5,6 +5,10 @@ export const ItemsContext = createContext()
 const ItemsContextProvider = props => {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")) || [])
 
+  function updateStorage() {
+    localStorage.setItem("items", JSON.stringify(items))
+  }
+
   const addItem = (date, description, type, amount) => {
     setItems([
       ...items,
@@ -26,11 +30,12 @@ const ItemsContextProvider = props => {
         item.amount = amount
       }
     })
+    updateStorage()
   }
   const removeItem = id => {
     setItems(items.filter(item => item.id !== id))
   }
-  localStorage.setItem("items", JSON.stringify(items))
+  updateStorage()
 
   return (
     <ItemsContext.Provider value={{ items, addItem, updateItem, removeItem }}>
