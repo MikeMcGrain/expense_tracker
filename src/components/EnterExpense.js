@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
 import Form from "react-bootstrap/Form"
-
 import Button from "react-bootstrap/Button"
 
 export default () => {
@@ -48,6 +47,9 @@ export default () => {
           autoFocus
           required
         />
+        <Form.Control.Feedback type="invalid">
+          Please enter a description
+        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="type">

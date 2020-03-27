@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 import EditExpenseModal from "react-modal"
 
 EditExpenseModal.setAppElement(document.getElementById("root"))
-
 
 export default props => {
   const { updateItem } = useContext(ItemsContext)
@@ -32,37 +33,35 @@ export default props => {
       isOpen={props.showModal}
       onRequestClose={props.closeModal}
     >
-      <h2>EditExpense</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="date">Date: </label>
-          <input
-            id="date"
-            name="date"
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="date">
+          <Form.Label>Date: </Form.Label>
+          <Form.Control
             type="date"
             value={date}
             onChange={e => setDate(e.target.value)}
           />
-        </div>
+        </Form.Group>
 
-        <div>
-          <label htmlFor="description">Description: </label>
-          <input
-            id="description"
-            name="description"
+        <Form.Group controlId="description">
+          <Form.Label>Description: </Form.Label>
+          <Form.Control
             type="text"
             value={description}
             onChange={e => setDescription(e.target.value)}
+            placeholder="Enter description of purchase"
             autoFocus
             required
           />
-        </div>
+          <Form.Control.Feedback type="invalid">
+            Please enter a description
+          </Form.Control.Feedback>
+        </Form.Group>
 
-        <div>
-          <label htmlFor="type">Type: </label>
-          <select
-            id="type"
-            name="type"
+        <Form.Group controlId="type">
+          <Form.Label>Type: </Form.Label>
+          <Form.Control
+            as="select"
             value={type}
             onChange={e => setType(e.target.value)}
           >
@@ -70,23 +69,24 @@ export default props => {
             <option value="debit">debit</option>
             <option value="credit">credit</option>
             <option value="check">check</option>
-          </select>
-        </div>
+          </Form.Control>
+        </Form.Group>
 
-        <div>
-          <label htmlFor="amount">Amount: </label>
-          <input
-            id="amount"
-            name="amount"
+        <Form.Group controlId="amount">
+          <Form.Label>Amount: </Form.Label>
+          <Form.Control
             type="number"
+            step="0.01"
             value={amount}
             onChange={e => setAmount(e.target.value)}
+            placeholder="Enter amounnt of purchase"
             required
           />
-        </div>
-        <button onClick={props.closeModal}>Cancel</button>
-        <input type="submit" value="Save Changes" />
-      </form>
+        </Form.Group>
+        <Button type="submit">Save Changes</Button>
+        <Button onClick={props.closeModal}>Cancel</Button>
+        
+      </Form>
     </EditExpenseModal>
   )
 }
