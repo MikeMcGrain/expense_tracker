@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react"
 import { ItemsContext } from "../contexts/ItemsContext"
 import EditExpense from "./EditExpense"
-import "../index.css"
+
+import Button from "react-bootstrap/Button"
+import Table from 'react-bootstrap/Table'
 
 export default () => {
   const { items, removeItem } = useContext(ItemsContext)
@@ -19,8 +21,8 @@ export default () => {
         <td>{item.date}</td>
         <td>
           {item.description}
-          <button onClick={() => editItem(item)}>Edit</button>
-          <button onClick={() => removeItem(item.id)}>Delete</button>
+          <Button onClick={() => editItem(item)}>Edit</Button>
+          <Button onClick={() => removeItem(item.id)}>Delete</Button>
         </td>
         <td>{item.type}</td>
         <td>{item.amount}</td>
@@ -30,8 +32,7 @@ export default () => {
 
   return (
     <div>
-      <h1>Expense Table</h1>
-      <table>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Date:</th>
@@ -41,7 +42,7 @@ export default () => {
           </tr>
         </thead>
         <tbody>{renderItems}</tbody>
-      </table>
+      </Table>
       <EditExpense
         showModal={showModal}
         itemToEdit={itemToEdit}

@@ -4,6 +4,7 @@ import EditExpenseModal from "react-modal"
 
 EditExpenseModal.setAppElement(document.getElementById("root"))
 
+
 export default props => {
   const { updateItem } = useContext(ItemsContext)
   const [id, setID] = useState()
