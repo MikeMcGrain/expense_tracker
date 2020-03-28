@@ -1,13 +1,13 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useState, useEffect } from "react"
 import shortid from "shortid"
 
 export const ItemsContext = createContext()
 const ItemsContextProvider = props => {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")) || [])
 
-  function updateStorage() {
+  useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items))
-  }
+  }, [items])
 
   const addItem = (date, description, type, amount) => {
     setItems([
@@ -30,12 +30,11 @@ const ItemsContextProvider = props => {
         item.amount = amount
       }
     })
-    updateStorage()
+    setItems()
   }
   const removeItem = id => {
     setItems(items.filter(item => item.id !== id))
   }
-  updateStorage()
 
   return (
     <ItemsContext.Provider value={{ items, addItem, updateItem, removeItem }}>
