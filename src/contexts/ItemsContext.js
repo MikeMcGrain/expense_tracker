@@ -3,10 +3,12 @@ import shortid from "shortid"
 
 export const ItemsContext = createContext()
 const ItemsContextProvider = props => {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")) || [])
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("ExpenseTrackerItems")) || []
+  )
 
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items))
+    localStorage.setItem("ExpenseTrackerItems", JSON.stringify(items))
   }, [items])
 
   const addItem = (date, description, type, amount) => {
@@ -22,7 +24,8 @@ const ItemsContextProvider = props => {
     ])
   }
   const updateItem = (id, date, description, type, amount) => {
-    items.forEach(item => {
+    const itemsClone = [...items]
+    itemsClone.forEach(item => {
       if (id === item.id) {
         item.date = date
         item.description = description
@@ -30,7 +33,7 @@ const ItemsContextProvider = props => {
         item.amount = amount
       }
     })
-    setItems()
+    setItems(itemsClone)
   }
   const removeItem = id => {
     setItems(items.filter(item => item.id !== id))
