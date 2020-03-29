@@ -30,7 +30,7 @@ export default () => {
         <Form.Label>Date: </Form.Label>
         <Form.Control
           type="date"
-          defaultValue={date}
+          value={date}
           onChange={e => setDate(e.target.value)}
         />
       </Form.Group>
@@ -39,22 +39,19 @@ export default () => {
         <Form.Label>Description: </Form.Label>
         <Form.Control
           type="text"
-          defaultValue={description}
+          value={description}
           onChange={e => setDescription(e.target.value)}
-          placeholder="description of purchase"
+          placeholder="description of expense"
           autoFocus
           required
         />
-        <Form.Control.Feedback type="invalid">
-          Please enter a description
-        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="type">
         <Form.Label>Type: </Form.Label>
         <Form.Control
           as="select"
-          defaultValue={type}
+          value={type}
           onChange={e => setType(e.target.value)}
         >
           <option value="cash">cash</option>
@@ -69,13 +66,15 @@ export default () => {
         <Form.Control
           type="number"
           step="0.01"
-          defaultValue={amount}
+          value={amount}
           onChange={e => setAmount(e.target.value)}
-          placeholder="amount of purchase"
+          placeholder="0.00"
           required
         />
       </Form.Group>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" variant="success">
+        Submit
+      </Button>
     </Form>
   )
 }

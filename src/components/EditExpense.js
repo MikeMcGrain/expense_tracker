@@ -26,7 +26,6 @@ export default props => {
 
   return (
     <Modal show={props.showModal} onHide={props.closeModal}>
-      <Modal.Header>Edit this item:</Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="date">
@@ -73,7 +72,7 @@ export default props => {
               required
             />
           </Form.Group>
-          <Button type="submit">Save Changes</Button>
+          <Button type="submit" variant="success">Save Changes</Button>
           <Button onClick={props.closeModal}>Cancel</Button>
         </Form>
       </Modal.Body>

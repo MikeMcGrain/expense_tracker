@@ -21,8 +21,8 @@ export default () => {
         <td>{item.date}</td>
         <td>
           {item.description}
-          <Button onClick={() => editItem(item)}>Edit</Button>
-          <Button onClick={() => removeItem(item.id)}>Delete</Button>
+          <Button onClick={() => editItem(item)} size="sm">Edit</Button>
+          <Button onClick={() => removeItem(item.id)} variant="danger" size="sm">Delete</Button>
           {/* <i
             onClick={() => editItem(item)}
             className="glyphicon glyphicon-edit"
