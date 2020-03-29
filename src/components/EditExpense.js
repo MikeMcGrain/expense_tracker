@@ -41,7 +41,7 @@ export default props => {
             <Form.Label>Description: </Form.Label>
             <Form.Control
               type="text"
-              defaultValue={description}
+              value={description}
               onChange={e => setDescription(e.target.value)}
               autoFocus
               required
@@ -52,7 +52,7 @@ export default props => {
             <Form.Label>Type: </Form.Label>
             <Form.Control
               as="select"
-              defaultValue={type}
+              value={type}
               onChange={e => setType(e.target.value)}
             >
               <option value="cash">cash</option>
@@ -67,7 +67,7 @@ export default props => {
             <Form.Control
               type="number"
               step="0.01"
-              defaultValue={amount}
+              value={amount}
               onChange={e => setAmount(e.target.value)}
               required
             />
