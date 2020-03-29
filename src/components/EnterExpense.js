@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react"
+import { Form, Button } from "react-bootstrap"
 import { ItemsContext } from "../contexts/ItemsContext"
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
 
 export default () => {
   const { addItem } = useContext(ItemsContext)
-
   const [date, setDate] = useState(getCurrentDate)
   const [description, setDescription] = useState("")
   const [type, setType] = useState("cash")
@@ -32,7 +30,7 @@ export default () => {
         <Form.Label>Date: </Form.Label>
         <Form.Control
           type="date"
-          value={date}
+          defaultValue={date}
           onChange={e => setDate(e.target.value)}
         />
       </Form.Group>
@@ -41,9 +39,9 @@ export default () => {
         <Form.Label>Description: </Form.Label>
         <Form.Control
           type="text"
-          value={description}
+          defaultValue={description}
           onChange={e => setDescription(e.target.value)}
-          placeholder="Enter description of purchase"
+          placeholder="description of purchase"
           autoFocus
           required
         />
@@ -56,7 +54,7 @@ export default () => {
         <Form.Label>Type: </Form.Label>
         <Form.Control
           as="select"
-          value={type}
+          defaultValue={type}
           onChange={e => setType(e.target.value)}
         >
           <option value="cash">cash</option>
@@ -71,13 +69,12 @@ export default () => {
         <Form.Control
           type="number"
           step="0.01"
-          value={amount}
+          defaultValue={amount}
           onChange={e => setAmount(e.target.value)}
-          placeholder="Enter amounnt of purchase"
+          placeholder="amount of purchase"
           required
         />
       </Form.Group>
-
       <Button type="submit">Submit</Button>
     </Form>
   )

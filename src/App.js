@@ -1,12 +1,10 @@
 import React from "react"
+import { Container, Col, Row } from "react-bootstrap"
+import ItemsContextProvider from "./contexts/ItemsContext"
 import EnterExpense from "./components/EnterExpense"
 import DisplayExpense from "./components/DisplayExpense"
-import ItemsContextProvider from "./contexts/ItemsContext"
 import Navbar from "./components/Navbar"
-
-import Container from "react-bootstrap/Container"
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 export default () => {
   return (
