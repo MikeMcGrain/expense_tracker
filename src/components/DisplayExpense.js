@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react"
-import {Table, Button} from "react-bootstrap"
+import { Table, Button } from "react-bootstrap"
+import { Container, Col, Row } from "react-bootstrap"
+
 import { ItemsContext } from "../contexts/ItemsContext"
 import EditExpense from "./EditExpense"
 import "../index.css"
-
 
 export default () => {
   const { items, removeItem } = useContext(ItemsContext)
@@ -20,9 +21,26 @@ export default () => {
       <tr key={item.id}>
         <td>{item.date}</td>
         <td>
-          {item.description}
-          <Button onClick={() => editItem(item)} size="sm">Edit</Button>
-          <Button onClick={() => removeItem(item.id)} variant="danger" size="sm">Delete</Button>
+          <Container>
+            <Row>
+              <Col>{item.description}</Col>
+              <Col>
+                <Button onClick={() => editItem(item)} size="sm">
+                  Edit
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  onClick={() => removeItem(item.id)}
+                  variant="danger"
+                  size="sm"
+                >
+                  Delete
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+
           {/* <i
             onClick={() => editItem(item)}
             className="glyphicon glyphicon-edit"

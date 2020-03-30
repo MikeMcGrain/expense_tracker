@@ -11,11 +11,11 @@ export default props => {
   const [amount, setAmount] = useState()
 
   useEffect(() => {
-    setID(props.itemToEdit.id)
-    setDate(props.itemToEdit.date)
-    setDescription(props.itemToEdit.description)
-    setType(props.itemToEdit.type)
-    setAmount(props.itemToEdit.amount)
+    setID(props.itemToEdit.id || "")
+    setDate(props.itemToEdit.date || "")
+    setDescription(props.itemToEdit.description  || "")
+    setType(props.itemToEdit.type  || "")
+    setAmount(props.itemToEdit.amount  || "")
   }, [props])
 
   function handleSubmit(event) {
