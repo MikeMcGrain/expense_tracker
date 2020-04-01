@@ -1,9 +1,5 @@
-.glyphicon:hover {
-  transform: scale(1.5)
-}
-
 .app-row {
-  padding-top: 50px;
+  margin-top: 50px;
 }
 
 .display-button {

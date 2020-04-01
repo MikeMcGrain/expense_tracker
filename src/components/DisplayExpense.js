@@ -1,10 +1,7 @@
 import React, { useContext, useState } from "react"
 import { Table, Button } from "react-bootstrap"
-import { Container, Col, Row } from "react-bootstrap"
-
 import { ItemsContext } from "../contexts/ItemsContext"
 import EditExpense from "./EditExpense"
-// import "../index.css"
 
 export default () => {
   const { items, removeItem } = useContext(ItemsContext)
@@ -37,17 +34,6 @@ export default () => {
           >
             Edit
           </Button>
-
-          {/* <i
-            onClick={() => editItem(item)}
-            className="glyphicon glyphicon-edit"
-            style={{ fontSize: "25px", color: "blue" }}
-          ></i>
-          <i
-            onClick={() => removeItem(item.id)}
-            className="glyphicon glyphicon-trash"
-            style={{ fontSize: "25px", color: "red" }}
-          ></i> */}
         </td>
         <td>{item.type}</td>
         <td>{item.amount}</td>
@@ -56,7 +42,7 @@ export default () => {
   })
 
   return (
-    <div>
+    <div className="app-row">
       <Table striped bordered hover>
         <thead>
           <tr>

@@ -25,7 +25,7 @@ export default () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="app-row" onSubmit={handleSubmit}>
       <Form.Group controlId="date">
         <Form.Label>Date: </Form.Label>
         <Form.Control

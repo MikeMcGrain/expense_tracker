@@ -13,7 +13,7 @@ export default () => {
       <Navbar />
       <ItemsContextProvider>
         <Container fluid>
-          <Row className="app-row">
+          <Row>
             <Col xs={12} lg={4}>
               <EnterExpense />
             </Col>
