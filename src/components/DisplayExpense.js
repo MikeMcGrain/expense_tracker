@@ -42,7 +42,7 @@ export default () => {
   })
 
   return (
-    <div className="app-row">
+    <div className="top-margin">
       <Table striped bordered hover>
         <thead>
           <tr>

@@ -1,8 +1,12 @@
-.app-row {
+.top-margin {
   margin-top: 50px;
 }
 
 .display-button {
   float: right;
   margin-right: 10px;
+}
+
+.cancel-button {
+  float: right;
 }

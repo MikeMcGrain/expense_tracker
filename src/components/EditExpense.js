@@ -73,7 +73,7 @@ export default props => {
             />
           </Form.Group>
           <Button type="submit" variant="success">Save Changes</Button>
-          <Button onClick={props.closeModal}>Cancel</Button>
+          <Button className="cancel-button" onClick={props.closeModal}>Cancel</Button>
         </Form>
       </Modal.Body>
     </Modal>
