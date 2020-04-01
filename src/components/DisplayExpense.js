@@ -4,7 +4,7 @@ import { Container, Col, Row } from "react-bootstrap"
 
 import { ItemsContext } from "../contexts/ItemsContext"
 import EditExpense from "./EditExpense"
-import "../index.css"
+// import "../index.css"
 
 export default () => {
   const { items, removeItem } = useContext(ItemsContext)
@@ -21,25 +21,22 @@ export default () => {
       <tr key={item.id}>
         <td>{item.date}</td>
         <td>
-          <Container>
-            <Row>
-              <Col>{item.description}</Col>
-              <Col>
-                <Button onClick={() => editItem(item)} size="sm">
-                  Edit
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  onClick={() => removeItem(item.id)}
-                  variant="danger"
-                  size="sm"
-                >
-                  Delete
-                </Button>
-              </Col>
-            </Row>
-          </Container>
+          {item.description}
+          <Button
+            className="display-button"
+            onClick={() => removeItem(item.id)}
+            variant="danger"
+            size="sm"
+          >
+            Delete
+          </Button>
+          <Button
+            className="display-button"
+            onClick={() => editItem(item)}
+            size="sm"
+          >
+            Edit
+          </Button>
 
           {/* <i
             onClick={() => editItem(item)}

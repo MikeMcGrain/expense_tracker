@@ -15,8 +15,8 @@ View live on Heroku [here](https://react-expensetracker.herokuapp.com/)
 
 ## Summary
 
-I enjoyed digging in to React (including Hooks and Context) while building this app. It is true what they say, "React will make you a better JavaScripter". I'm definitely looking forward to using React again in my next project.  
-
+ It is true what they say: "React will make you a better JavaScripter".  I've enjoyed using it, as well as Hooks and Context, to build this app; and I'm looking forward to using it again in my next project.  
+ 
 ## Author
 
 * **Mike McGrain** - *Full-Stack Software Developement* - [Website](http://mikemcgrain.com) | [LinkedIn](https://www.linkedin.com/in/michaelmcgrain)
