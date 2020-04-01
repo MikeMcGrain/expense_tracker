@@ -1,8 +1,15 @@
-.top-margin {
-  margin-top: 50px;
+.enter-margins {
+  margin-top: 40px;
+  margin-left: 1.5vw;
 }
 
-.display-button {
+.display-margins {
+  margin-top: 40px;
+  margin-right: 1.5vw;
+}
+
+.icon-style {
+  cursor: pointer;
+  margin-right: 20px;
   float: right;
-  margin-right: 10px;
 }

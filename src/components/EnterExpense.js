@@ -31,7 +31,7 @@ export default () => {
   }
 
   return (
-    <Form className="top-margin" onSubmit={handleSubmit}>
+    <Form className="enter-margins" onSubmit={handleSubmit}>
       <Form.Group controlId="date">
         <Form.Label>Date: </Form.Label>
         <Form.Control
