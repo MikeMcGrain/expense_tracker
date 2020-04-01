@@ -3,11 +3,14 @@ import { Form, Button } from "react-bootstrap"
 import { ItemsContext } from "../contexts/ItemsContext"
 
 export default () => {
+  const defaultItem = {
+    date: getCurrentDate(),
+    description: "",
+    type: "cash",
+    amount: ""
+  }
   const { addItem } = useContext(ItemsContext)
-  const [date, setDate] = useState(getCurrentDate)
-  const [description, setDescription] = useState("")
-  const [type, setType] = useState("cash")
-  const [amount, setAmount] = useState("")
+  const [item, setItem] = useState(defaultItem)
 
   function getCurrentDate() {
     const date = new Date()
@@ -17,11 +20,14 @@ export default () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    addItem(date, description, type, amount)
-    setDate(getCurrentDate)
-    setDescription("")
-    setType("cash")
-    setAmount("")
+    addItem(item)
+    setItem(defaultItem)
+  }
+
+  function handleChange(e) {
+    const itemCopy = Object.assign({}, item)
+    itemCopy[e.target.name] = e.target.value
+    setItem(itemCopy)
   }
 
   return (
@@ -30,8 +36,9 @@ export default () => {
         <Form.Label>Date: </Form.Label>
         <Form.Control
           type="date"
-          value={date}
-          onChange={e => setDate(e.target.value)}
+          name="date"
+          value={item.date}
+          onChange={handleChange}
         />
       </Form.Group>
 
@@ -39,8 +46,9 @@ export default () => {
         <Form.Label>Description: </Form.Label>
         <Form.Control
           type="text"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
+          name="description"
+          value={item.description}
+          onChange={handleChange}
           placeholder="description of expense"
           autoFocus
           required
@@ -51,8 +59,9 @@ export default () => {
         <Form.Label>Type: </Form.Label>
         <Form.Control
           as="select"
-          value={type}
-          onChange={e => setType(e.target.value)}
+          name="type"
+          value={item.type}
+          onChange={handleChange}
         >
           <option value="cash">cash</option>
           <option value="debit">debit</option>
@@ -64,17 +73,16 @@ export default () => {
       <Form.Group controlId="amount">
         <Form.Label>Amount: </Form.Label>
         <Form.Control
+          name="amount"
           type="number"
           step="0.01"
-          value={amount}
-          onChange={e => setAmount(e.target.value)}
+          value={item.amount}
+          onChange={handleChange}
           placeholder="0.00"
           required
         />
       </Form.Group>
-      <Button type="submit" variant="success">
-        Submit
-      </Button>
+      <Button type="submit" variant="success">Submit</Button>
     </Form>
   )
 }

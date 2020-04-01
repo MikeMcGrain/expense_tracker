@@ -4,36 +4,37 @@ import { Modal, Form, Button } from "react-bootstrap"
 
 export default props => {
   const { updateItem } = useContext(ItemsContext)
-  const [id, setID] = useState()
-  const [date, setDate] = useState()
-  const [description, setDescription] = useState()
-  const [type, setType] = useState()
-  const [amount, setAmount] = useState()
+  const [item, setItem] = useState()
 
-  useEffect(() => {
-    setID(props.itemToEdit.id || "")
-    setDate(props.itemToEdit.date || "")
-    setDescription(props.itemToEdit.description  || "")
-    setType(props.itemToEdit.type  || "")
-    setAmount(props.itemToEdit.amount  || "")
-  }, [props])
+  useEffect(() => {setItem(props.itemToEdit)}, [props])
 
   function handleSubmit(event) {
     event.preventDefault()
-    updateItem(id, date, description, type, amount)
+    updateItem(item)
     props.closeModal()
+  }
+
+  function handleChange(e) {
+    const itemCopy = Object.assign({}, item)
+    itemCopy[e.target.name] = e.target.value
+    setItem(itemCopy)
+  }
+
+  if (!item) {
+    return null
   }
 
   return (
     <Modal show={props.showModal} onHide={props.closeModal}>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
+        <Form id="edit-form" onSubmit={handleSubmit}>
           <Form.Group controlId="date">
             <Form.Label>Date: </Form.Label>
             <Form.Control
               type="date"
-              defaultValue={date}
-              onChange={e => setDate(e.target.value)}
+              name="date"
+              defaultValue={item.date}
+              onChange={handleChange}
             />
           </Form.Group>
 
@@ -41,8 +42,9 @@ export default props => {
             <Form.Label>Description: </Form.Label>
             <Form.Control
               type="text"
-              value={description}
-              onChange={e => setDescription(e.target.value)}
+              name="description"
+              value={item.description}
+              onChange={handleChange}
               autoFocus
               required
             />
@@ -52,8 +54,9 @@ export default props => {
             <Form.Label>Type: </Form.Label>
             <Form.Control
               as="select"
-              value={type}
-              onChange={e => setType(e.target.value)}
+              name="type"
+              value={item.type}
+              onChange={handleChange}
             >
               <option value="cash">cash</option>
               <option value="debit">debit</option>
@@ -67,15 +70,18 @@ export default props => {
             <Form.Control
               type="number"
               step="0.01"
-              value={amount}
-              onChange={e => setAmount(e.target.value)}
+              name="amount"
+              value={item.amount}
+              onChange={handleChange}
               required
             />
           </Form.Group>
-          <Button type="submit" variant="success">Save Changes</Button>
-          <Button className="cancel-button" onClick={props.closeModal}>Cancel</Button>
         </Form>
       </Modal.Body>
+      <Modal.Footer>
+        <Button type="submit" variant="success" form="edit-form">Save Changes</Button>
+        <Button className="cancel-button" onClick={props.closeModal}>Cancel</Button>
+      </Modal.Footer>
     </Modal>
   )
 }

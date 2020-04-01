@@ -11,26 +11,26 @@ const ItemsContextProvider = props => {
     localStorage.setItem("ExpenseTrackerItems", JSON.stringify(items))
   }, [items])
 
-  const addItem = (date, description, type, amount) => {
+  const addItem = item => {
     setItems([
       ...items,
       {
         id: shortid.generate(),
-        date: date,
-        description: description,
-        type: type,
-        amount: amount
+        date: item.date,
+        description: item.description,
+        type: item.type,
+        amount: item.amount
       }
     ])
   }
-  const updateItem = (id, date, description, type, amount) => {
+  const updateItem = itemToUpdate => {
     const itemsClone = [...items]
     itemsClone.forEach(item => {
-      if (id === item.id) {
-        item.date = date
-        item.description = description
-        item.type = type
-        item.amount = amount
+      if (itemToUpdate.id === item.id) {
+        item.date = itemToUpdate.date
+        item.description = itemToUpdate.description
+        item.type = itemToUpdate.type
+        item.amount = itemToUpdate.amount
       }
     })
     setItems(itemsClone)
