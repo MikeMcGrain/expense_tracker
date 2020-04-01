@@ -6,7 +6,13 @@ export default props => {
   const { updateItem } = useContext(ItemsContext)
   const [item, setItem] = useState()
 
-  useEffect(() => {setItem(props.itemToEdit)}, [props])
+  useEffect(() => {
+    setItem(props.itemToEdit)
+  }, [props])
+
+  if (!item) {
+    return null
+  }
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -18,10 +24,6 @@ export default props => {
     const itemCopy = Object.assign({}, item)
     itemCopy[e.target.name] = e.target.value
     setItem(itemCopy)
-  }
-
-  if (!item) {
-    return null
   }
 
   return (
@@ -79,8 +81,12 @@ export default props => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button type="submit" variant="success" form="edit-form">Save Changes</Button>
-        <Button className="cancel-button" onClick={props.closeModal}>Cancel</Button>
+        <Button type="submit" variant="success" form="edit-form">
+          Save Changes
+        </Button>
+        <Button className="cancel-button" onClick={props.closeModal}>
+          Cancel
+        </Button>
       </Modal.Footer>
     </Modal>
   )

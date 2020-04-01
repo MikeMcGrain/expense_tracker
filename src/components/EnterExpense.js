@@ -15,7 +15,8 @@ export default () => {
   function getCurrentDate() {
     const date = new Date()
     const month = date.getMonth() + 1
-    return `${date.getFullYear()}-${("0" + month).slice(-2)}-${date.getDate()}`
+    const day = date.getDate()
+    return `${date.getFullYear()}-${("0" + month).slice(-2)}-${("0" + day).slice(-2)}`
   }
 
   function handleSubmit(event) {
@@ -82,7 +83,9 @@ export default () => {
           required
         />
       </Form.Group>
-      <Button type="submit" variant="success">Submit</Button>
+      <Button type="submit" variant="success">
+        Submit
+      </Button>
     </Form>
   )
 }

@@ -24,14 +24,14 @@ export default () => {
         <td>{item.amount}</td>
         <td>
           <FontAwesomeIcon
-            icon={faTrashAlt}
-            className="text-danger icon-style"
-            onClick={() => removeItem(item.id)}
+            icon={faPencilAlt}
+            className="text-primary edit-icon-style"
+            onClick={() => editItem(item)}
           ></FontAwesomeIcon>
           <FontAwesomeIcon
-            icon={faPencilAlt}
-            className="text-primary icon-style"
-            onClick={() => editItem(item)}
+            icon={faTrashAlt}
+            className="text-danger trash-icon-style"
+            onClick={() => removeItem(item.id)}
           ></FontAwesomeIcon>
         </td>
       </tr>
@@ -40,7 +40,7 @@ export default () => {
 
   return (
     <div className="display-margins">
-      <Table striped bordered hover>
+      <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th>Date:</th>
